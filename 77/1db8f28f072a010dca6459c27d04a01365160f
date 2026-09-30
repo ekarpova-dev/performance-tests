@@ -1,0 +1,37 @@
+clients/http/gateway/cards/client.py
+  s_e4c5cb9968ecbc::t_acd00e51a74e70 15,31-33,36,40-42,45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "0.0.56",
+  "base_commit_sha": "771db8f28f072a010dca6459c27d04a01365160f",
+  "prompts": {},
+  "sessions": {
+    "s_e4c5cb9968ecbc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09a6f-fb98-7492-87f3-246e682ef9cd",
+        "model": "gpt-5.5"
+      },
+      "human_author": "ekarpova-dev <ekarpova@marfa-tech.com>",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "input_tokens": 81410,
+          "output_tokens": 4314,
+          "cache_read_tokens": 458496,
+          "cache_write_5m_tokens": 0,
+          "cache_write_1h_tokens": 0,
+          "assistant_messages": 18,
+          "turns": 6,
+          "ai_wall_ms": 183580,
+          "first_ts": "2026-09-13T11:04:13.091Z",
+          "last_ts": "2026-09-30T19:32:55.129Z",
+          "session_total_output_tokens": 4314
+        }
+      ],
+      "accepted_lines": 9,
+      "overridden_lines": 5
+    }
+  }
+}
