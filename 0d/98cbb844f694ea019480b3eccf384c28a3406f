@@ -1,0 +1,99 @@
+clients/http/gateway/accounts/__init__.py
+  s_e4c5cb9968ecbc::t_50a55386a69b3a 1
+api_client_get_documents.py
+  s_e4c5cb9968ecbc::t_50a55386a69b3a 1-2,5-24,28-39
+  s_e4c5cb9968ecbc::t_24607deb82fd0e 3-4,25-27
+clients/http/gateway/documents/__init__.py
+  s_e4c5cb9968ecbc::t_50a55386a69b3a 1
+clients/http/gateway/documents/client.py
+  s_e4c5cb9968ecbc::t_11b9d0c9983fcd 38,47
+  s_e4c5cb9968ecbc::t_50a55386a69b3a 1-37,39-46,48-76
+clients/http/gateway/users/__init__.py
+  s_e4c5cb9968ecbc::t_50a55386a69b3a 1
+clients/http/gateway/accounts/client.py
+  s_e4c5cb9968ecbc::t_9a0da25dfc284a 7-21
+  s_e4c5cb9968ecbc::t_50a55386a69b3a 1-6,22-204
+clients/http/gateway/users/client.py
+  s_e4c5cb9968ecbc::t_50a55386a69b3a 1-72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "0.0.68",
+  "base_commit_sha": "0d98cbb844f694ea019480b3eccf384c28a3406f",
+  "prompts": {},
+  "sessions": {
+    "s_e4c5cb9968ecbc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a09a6f-fb98-7492-87f3-246e682ef9cd",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "ekarpova-dev <ekarpova@marfa-tech.com>",
+      "usage": [
+        {
+          "model": "gpt-5.5",
+          "input_tokens": 4270,
+          "output_tokens": 360,
+          "cache_read_tokens": 132864,
+          "cache_write_5m_tokens": 0,
+          "cache_write_1h_tokens": 0,
+          "assistant_messages": 2,
+          "turns": 0,
+          "ai_wall_ms": 10413,
+          "first_ts": "2026-10-01T20:31:41.149Z",
+          "last_ts": "2026-10-01T20:31:45.874Z",
+          "session_total_output_tokens": 14364
+        },
+        {
+          "model": "gpt-5.6-sol",
+          "input_tokens": 150819,
+          "output_tokens": 19307,
+          "cache_read_tokens": 4485376,
+          "cache_write_5m_tokens": 0,
+          "cache_write_1h_tokens": 0,
+          "assistant_messages": 44,
+          "turns": 12,
+          "ai_wall_ms": 455717,
+          "first_ts": "2026-11-13T15:04:24.389Z",
+          "last_ts": "2026-11-13T15:20:42.909Z",
+          "session_total_output_tokens": 19307
+        }
+      ],
+      "tools": [
+        {
+          "tool": "exec",
+          "model": "gpt-5.6-sol",
+          "calls": 34,
+          "result_chars": 203148,
+          "result_input_tokens": 63324,
+          "result_cache_write_5m_tokens": 0,
+          "result_cache_write_1h_tokens": 0,
+          "call_output_tokens": 16638
+        },
+        {
+          "tool": "exec_command",
+          "model": "gpt-5.5",
+          "calls": 2,
+          "result_chars": 3990,
+          "result_input_tokens": 2237,
+          "result_cache_write_5m_tokens": 0,
+          "result_cache_write_1h_tokens": 0,
+          "call_output_tokens": 226
+        },
+        {
+          "tool": "wait",
+          "model": "gpt-5.6-sol",
+          "calls": 4,
+          "result_chars": 57905,
+          "result_input_tokens": 19147,
+          "result_cache_write_5m_tokens": 0,
+          "result_cache_write_1h_tokens": 0,
+          "call_output_tokens": 299
+        }
+      ],
+      "accepted_lines": 394,
+      "overridden_lines": 0
+    }
+  },
+  "install_id": "7fdceea0-220d-421f-93ab-d23b8a5d4599"
+}
