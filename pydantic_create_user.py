@@ -1,31 +1,30 @@
-import uuid
-from datetime import date
+"""Pydantic-модели запроса и ответа для создания пользователя."""
 
-from pydantic import BaseModel, Field, HttpUrl, EmailStr, ValidationError
+from pydantic import BaseModel, EmailStr, Field
 
-# Добавили модель UserSchema
+
 class UserSchema(BaseModel):
+    """Данные пользователя, включая присвоенный сервером идентификатор."""
+
     id: str
-    email: EmailStr  # Используем EmailStr вместо str
+    email: EmailStr
     last_name: str = Field(alias="lastName")
     first_name: str = Field(alias="firstName")
     middle_name: str = Field(alias="middleName")
     phone_number: str = Field(alias="phoneNumber")
 
 
-# Добавили модель UserSchema
 class CreateUserRequestSchema(BaseModel):
-    email: EmailStr  # Используем EmailStr вместо str
-    last_name: str
-    first_name: str
-    middle_name: str
-    phone_number: str
+    """Обязательные данные для запроса POST /api/v1/users."""
 
-# Добавили модель UserSchema
+    email: EmailStr
+    last_name: str = Field(alias="lastName")
+    first_name: str = Field(alias="firstName")
+    middle_name: str = Field(alias="middleName")
+    phone_number: str = Field(alias="phoneNumber")
+
+
 class CreateUserResponseSchema(BaseModel):
-    id: str
-    email: EmailStr  # Используем EmailStr вместо str
-    last_name: str
-    first_name: str
-    middle_name: str
-    phone_number: str
+    """Ответ API с данными созданного пользователя."""
+
+    user: UserSchema
