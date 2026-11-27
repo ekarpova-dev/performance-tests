@@ -17,11 +17,11 @@ print("Create user response:", create_user_response)
 
 # Открываем кредитный счет.
 open_credit_card_account_response = accounts_gateway_client.open_credit_card_account(
-    user_id=create_user_response["user"]["id"]
+    user_id=create_user_response.user.id
 )
 print("Open credit card account response:", open_credit_card_account_response)
 
-account_id = open_credit_card_account_response["account"]["id"]
+account_id = open_credit_card_account_response.account.id
 
 # Документы создаются асинхронно после открытия счета.
 time.sleep(2)
