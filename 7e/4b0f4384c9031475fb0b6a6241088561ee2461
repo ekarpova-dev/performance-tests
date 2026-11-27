@@ -1,0 +1,53 @@
+clients/http/gateway/operations/client.py
+  s_46db1e79a9d794::t_d861565dfcdcd0 5-25,27
+  s_46db1e79a9d794::t_f8b306656cfcf9 26,145,148,150,155,158,160,165,167,169,171,176,178,180,186,192,194-195,197-198,201,207,213,215-216,218-219,222,228,234,236-237,239-240,243,249,255,257-258,260-261,264,270,276,278-279,281-282,286,292,298,300-301,303-304,307,313,319,321-322,324-325
+clients/http/gateway/operations/schema.py
+  s_46db1e79a9d794::t_f8b306656cfcf9 1-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "0.0.69",
+  "base_commit_sha": "7e4b0f4384c9031475fb0b6a6241088561ee2461",
+  "prompts": {},
+  "sessions": {
+    "s_46db1e79a9d794": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21d35-2d85-7ce3-8793-7d8ee4266cfd",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "ekarpova-dev <ekarpova@marfa-tech.com>",
+      "usage": [
+        {
+          "model": "gpt-6.1-sol",
+          "input_tokens": 44802,
+          "output_tokens": 5611,
+          "cache_read_tokens": 1073408,
+          "cache_write_5m_tokens": 0,
+          "cache_write_1h_tokens": 0,
+          "assistant_messages": 25,
+          "turns": 11,
+          "ai_wall_ms": 158351,
+          "first_ts": "2026-11-27T13:36:52.833Z",
+          "last_ts": "2026-11-27T14:59:29.892Z",
+          "session_total_output_tokens": 8448
+        }
+      ],
+      "tools": [
+        {
+          "tool": "exec",
+          "model": "gpt-6.1-sol",
+          "calls": 14,
+          "result_chars": 93718,
+          "result_input_tokens": 35366,
+          "result_cache_write_5m_tokens": 0,
+          "result_cache_write_1h_tokens": 0,
+          "call_output_tokens": 3330
+        }
+      ],
+      "accepted_lines": 137,
+      "overridden_lines": 0
+    }
+  },
+  "install_id": "7fdceea0-220d-421f-93ab-d23b8a5d4599"
+}
