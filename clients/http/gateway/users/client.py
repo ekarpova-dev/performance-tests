@@ -1,72 +1,66 @@
 import time
-from typing import TypedDict
 
 from httpx import Response
 
 from clients.http.client import HTTPClient
 from clients.http.gateway.client import build_gateway_http_client
+from clients.http.gateway.users.schema import (  # Добавили импорт моделей
+    GetUserResponseSchema,
+    CreateUserRequestSchema,
+    CreateUserResponseSchema
+)
 
 
-class UserDict(TypedDict):
-    """Описывает структуру пользователя."""
-
-    id: str
-    email: str
-    lastName: str
-    firstName: str
-    middleName: str
-    phoneNumber: str
-
-
-class CreateUserRequestDict(TypedDict):
-    """Описывает тело запроса на создание пользователя."""
-
-    email: str
-    lastName: str
-    firstName: str
-    middleName: str
-    phoneNumber: str
-
-
-class CreateUserResponseDict(TypedDict):
-    """Описывает ответ на создание пользователя."""
-
-    user: UserDict
-
+# Старые модели с использованием TypedDict были удалены
 
 class UsersGatewayHTTPClient(HTTPClient):
-    """Клиент для взаимодействия с /api/v1/users сервиса http-gateway."""
+    """
+    Клиент для взаимодействия с /api/v1/users сервиса http-gateway.
+    """
 
-    def create_user_api(self, request: CreateUserRequestDict) -> Response:
+    def get_user_api(self, user_id: str) -> Response:
         """
-        Выполняет POST-запрос на создание пользователя.
+        Получить данные пользователя по его user_id.
 
-        :param request: Данные создаваемого пользователя.
-        :return: Ответ сервера в формате Response.
+        :param user_id: Идентификатор пользователя.
+        :return: Ответ от сервера (объект httpx.Response).
         """
-        return self.post("/api/v1/users", json=request)
+        return self.get(f"/api/v1/users/{user_id}")
 
-    def create_user(self) -> CreateUserResponseDict:
+    # Теперь используем pydantic-модель для аннотации
+    def create_user_api(self, request: CreateUserRequestSchema) -> Response:
         """
-        Создает пользователя с уникальным адресом электронной почты.
+        Создание нового пользователя.
 
-        :return: Словарь с данными созданного пользователя.
+        :param request: Pydantic-модель с данными нового пользователя.
+        :return: Ответ от сервера (объект httpx.Response).
         """
-        request = CreateUserRequestDict(
-            email=f"user.{time.time()}@example.com",
-            lastName="string",
-            firstName="string",
-            middleName="string",
-            phoneNumber="string",
+        # Сериализуем модель в словарь с использованием alias
+        return self.post("/api/v1/users", json=request.model_dump(by_alias=True))
+
+    def get_user(self, user_id: str) -> GetUserResponseSchema:
+        response = self.get_user_api(user_id)
+        # Инициализируем модель через валидацию JSON строки
+        return GetUserResponseSchema.model_validate_json(response.text)
+
+    # Теперь используем pydantic-модель для аннотации
+    def create_user(self) -> CreateUserResponseSchema:
+        request = CreateUserRequestSchema(  # Используем pydantic-модель для отправки запроса
+            email=f"user.{time.time()}@example.com",  # Передаем аргументы в формате snake_case вместо camelCase
+            last_name="string",  # Передаем аргументы в формате snake_case вместо camelCase
+            first_name="string",  # Передаем аргументы в формате snake_case вместо camelCase
+            middle_name="string",  # Передаем аргументы в формате snake_case вместо camelCase
+            phone_number="string"  # Передаем аргументы в формате snake_case вместо camelCase
         )
         response = self.create_user_api(request)
-        return response.json()
+        # Инициализируем модель через валидацию JSON строки
+        return CreateUserResponseSchema.model_validate_json(response.text)
 
 
 def build_users_gateway_http_client() -> UsersGatewayHTTPClient:
     """
-    Создает настроенный клиент для работы с пользователями.
+    Функция создаёт экземпляр UsersGatewayHTTPClient с уже настроенным HTTP-клиентом.
 
-    :return: Готовый экземпляр UsersGatewayHTTPClient.
+    :return: Готовый к использованию UsersGatewayHTTPClient.
     """
     return UsersGatewayHTTPClient(client=build_gateway_http_client())
